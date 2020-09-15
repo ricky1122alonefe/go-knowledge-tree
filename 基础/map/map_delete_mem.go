@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"runtime"
+	"time"
 )
 
 var lastTotalFreed uint64
@@ -29,11 +30,18 @@ func main() {
 	printMemStats()
 	log.Println("--------------------------------------------------------------")
 
-	intMap = nil
+	// intMap = nil
 	runtime.GC()
 	log.Println("--------------------------------------------------------------")
 	printMemStats()
 	log.Println("--------------------------------------------------------------")
+
+	time.Sleep(time.Minute * 2)
+	runtime.GC()
+	log.Println("--------------------------------------------------------------")
+	printMemStats()
+	log.Println("--------------------------------------------------------------")
+
 }
 
 func initMap() {

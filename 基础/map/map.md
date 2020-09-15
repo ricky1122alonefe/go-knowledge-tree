@@ -101,6 +101,8 @@ bucket 搬迁是逐步进行的，每进行一次赋值，会做至少一次搬�
 扩容不是一定会新增空间，也有可能是只是做了内存整理。
 tophash 的标志即可以判断是否为空，还会判断是否搬迁，以及搬迁的位置为X or Y。
 delete map 中的key，有可能出现很多空的kv，会导致搬迁操作。如果可以避免，尽量避免。
+golang delete map中的key 并不会直接释放内存 
+map = nil 之后 gc 会将对应内存释放
 ```
 golang中map并发并非安全
 syncMap
